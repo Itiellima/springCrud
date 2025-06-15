@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>
+    Lista de Pessoas
+</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>NOME</th>
+            <th>NASCIMENTO</th>
+            <th>AÇÃO</th>
+        </tr>
+
+        <tr th:each="pessoa : ${pessoa}">
+            <td th:text="${pessoa.id}"></td>
+            <td th:text="${pessoa.nome}"></td>
+            <td th:text="${pessoa.dt_nascimento}"></td>
+            <td>
+                <a th:href="@{|/pessoa/editarPessoa/${pessoa.id}|}">EDITAR</a>
+                <a th:href="@{|/pessoa/excluirPessoa/${pessoa.id}|}" onclick="return confirm('deseja excluir essa pessoa?')">EXCLUIR</a>
+            </td>
+        </tr>
+    </table>
+
+    <a th:href="@{/pessoa/inserirPessoa}">INCLUIR</a>
+
+</body>
+</html>

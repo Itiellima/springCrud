@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario</title>
+</head>
+<body>
+    <form th:action="@{/pessoa/salvarPessoa}" th:object="${pessoa}" th:method="POST">
+
+        <labe>ID</labe>
+        <input type="text" th:field="*{id}">
+        <br>
+
+        <labe>NOME</labe>
+        <input type="text" th:field="*{nome}">
+        <br>
+
+        <label>DATA DE NASCIMETO</label>
+        <input type="date" th:field="*{dt_nascimento}">
+        <br>
+
+        <button type="submit">Salvar</button>
+
+    </form>
+</body>
+</html>
