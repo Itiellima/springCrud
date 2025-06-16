@@ -42,8 +42,13 @@ public class PessoaController {
     @GetMapping("/editarPessoa/{id}")
     public String editar(@PathVariable Long id, Model model){
         Optional<Pessoa> pessoa = pessoaServices.getPessoaById(id);
-        model.addAttribute("pessoa", pessoa);
-        return "PessoaForm";
+        if(pessoa.isPresent()){
+            model.addAttribute("pessoa", pessoa.get());
+            return "PessoaForm";
+        }else{
+            return "redirect:/pessoa/listPessoa";
+        }
+
     }
 
     @GetMapping("/excluirPessoa/{id}")
